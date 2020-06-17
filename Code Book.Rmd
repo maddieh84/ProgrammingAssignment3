@@ -1,7 +1,19 @@
+---
+title: "Code Book"
+output: 
+  md_document:
+    variant: markdown_github
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+
 # Code Book
 
 ***  
-## About the Data ##
+# About the Data
 ***
 The dataset includes the following files:
 * 'README.txt'
