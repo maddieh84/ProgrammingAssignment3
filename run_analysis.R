@@ -118,4 +118,25 @@ trainactivitieswithdescr <- merge(trainactivities, activitylabels)
 traindata <- cbind(trainactivitieswithdescr, trainsubjects, trainneededvalues)
 ####
 
+####
+## Combining the test and train data, making subject a factor
+alldata <- rbind(testdata, traindata) %>% select( -activity )
+alldata <- mutate(alldata, subject = as.factor(alldata$subject))
+####
+
+####
+## Write the data out
+write.table(alldata, "Mean_and_StdDev_By_Activity.txt")
+####
+
+####
+## Making a 2nd tidy data set 
+## Group the data by activity, subject
+allgrouped <- group_by(alldata,activitydescription,subject)
+## Get the average of each variable
+summariseddata <- summarise_each(allgrouped, list(mean=mean))
+## Write the data out
+write.table(summariseddata, "Average_Variable_By_Activity.txt", row.names = FALSE)
+####
+
 
